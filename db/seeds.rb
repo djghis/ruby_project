@@ -25,6 +25,12 @@ merchant4 = Merchant.new(
   "name" => "easyJet"
 )
 
+merchant1.save()
+merchant2.save()
+merchant3.save()
+merchant4.save()
+
+
 tag1 = Tag.new(
   "name" => "groceries"
 )
@@ -48,3 +54,21 @@ tag5 = Tag.new(
 tag6 = Tag.new(
   "name" => "personal"
 )
+
+tag1.save()
+tag2.save()
+tag3.save()
+tag4.save()
+tag5.save()
+tag6.save()
+
+transaction1 = Transaction.new(
+  "amount" => "5.00",
+  "merchant_id" => merchant1.id,
+  "tag_id" => tag1.id
+)
+
+transaction1.save()
+
+binding.pry
+nil
