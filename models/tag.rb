@@ -16,4 +16,28 @@ class Tag
     @id = results.first['id'].to_i
   end
 
+  def edit()
+    sql = "UPDATE tags SET (name) = ($1) WHERE id = ($2)"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = "DELETE FROM tags WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM tags"
+    results = SqlRunner.run(sql)
+    return results.map{|tag| Tag.new(tag)}
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM tags"
+    SqlRunner.run(sql)
+  end
+
+
 end
