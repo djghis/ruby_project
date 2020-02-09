@@ -10,7 +10,7 @@ TransactionTag.delete_all()
 Transaction.delete_all()
 Tag.delete_all()
 Merchant.delete_all()
-# Budget.delete_all()
+Budget.delete_all()
 
 
 budget1 = Budget.new(
