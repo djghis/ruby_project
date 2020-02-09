@@ -6,10 +6,10 @@ require_relative('../models/transaction_tag')
 
 require('pry')
 
-# TransactionTag.delete_all()
-# Transaction.delete_all()
-# Tag.delete_all()
-# Merchant.delete_all()
+TransactionTag.delete_all()
+Transaction.delete_all()
+Tag.delete_all()
+Merchant.delete_all()
 # Budget.delete_all()
 
 
