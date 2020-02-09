@@ -18,6 +18,18 @@ class Transaction
     @id = results.first['id'].to_i
   end
 
+  def edit()
+    sql = "UPDATE transactions SET (amount, merchant_id) = ($1, $2) WHERE id = ($3)"
+    values = [@amount, @merchant_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = "DELETE FROM transactions WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
   def merchant_name()
     sql = "SELECT merchants.name FROM merchants WHERE id = $1"
     values = [@merchant_id]

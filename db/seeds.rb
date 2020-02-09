@@ -6,6 +6,7 @@ require_relative('../models/transaction_tag')
 
 require('pry')
 
+# TransactionTag.delete_all()
 # Transaction.delete_all()
 # Tag.delete_all()
 # Merchant.delete_all()
@@ -69,19 +70,20 @@ tag4.save()
 tag5.save()
 tag6.save()
 
+
 transaction1 = Transaction.new(
   "amount" => "5.00",
   "merchant_id" => merchant1.id
 )
-
-transaction1.save()
 
 transaction2 = Transaction.new(
   "amount" => "150.00",
   "merchant_id" => merchant2.id
 )
 
+transaction1.save()
 transaction2.save()
+
 
 transaction_tag1 = TransactionTag.new(
   "transaction_id" => transaction1.id,
