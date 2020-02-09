@@ -5,6 +5,12 @@ require_relative('../models/transaction')
 
 require('pry')
 
+Transaction.delete_all()
+Tag.delete_all()
+Merchant.delete_all()
+Budget.delete_all()
+
+
 budget1 = Budget.new(
   "amount" => "500"
 )
