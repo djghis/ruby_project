@@ -52,10 +52,17 @@ class Transaction
     return results.map{|transaction| Transaction.new(transaction)}
   end
 
+  def self.total()
+    all_transactions = Transaction.all
+    amounts = all_transactions.map {|result| result.amount}
+    total = amounts.reduce(0) {|sum, amount| sum + amount}
+    return total
+  end
 
   def self.delete_all()
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
   end
+
 
 end
