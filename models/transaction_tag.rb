@@ -6,8 +6,8 @@ class TransactionTag
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @transaction_id = options['transaction_id']
-    @tag_id = options['tag_id']
+    @transaction_id = options['transaction_id'].to_i
+    @tag_id = options['tag_id'].to_i
   end
 
   def save()

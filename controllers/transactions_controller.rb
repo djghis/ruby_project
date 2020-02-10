@@ -15,12 +15,16 @@ get '/transactions' do
 end
 
 get '/transactions/new' do
+  @tags = Tag.all()
   @merchants = Merchant.all()
   erb(:'transactions/new')
 end
 
 post '/transactions' do
- transaction = Transaction.new(params)
- transaction.save
+ @transaction = Transaction.new(params)
+ @transaction.save
+  for tag in params['tag_id']
+    TransactionTag.new("transaction_id" => @transaction.id, "tag_id" => tag).save
+  end
  redirect to '/transactions'
 end

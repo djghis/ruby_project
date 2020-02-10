@@ -3,7 +3,7 @@
 <form action="/transactions" method="post">
   <label for="amount">Payment amount:</label>
     <input id="amount" type="text" name="amount">
-    <br>
+    <br><br>
   <label for="merchant">Merchant:</label>
       <select id="merchant" name="merchant_id">
         <% for merchant in @merchants %>
@@ -11,7 +11,13 @@
         <% end %>
         <option value="other">New merchant</option>
       </select>
-      <input id="new_merchant" type="text" name="merchant_id" style='display:none'/>
+      <%# <input id="new_merchant" type="text" name="merchant_id" style='display:none/> %>
+      <br><br>
+  <label for="tags">Tags:</label>
+    <br>
+      <% for tag in @tags %>
+      <input type="checkbox" name="tag_id[]" value="<%= tag.id %>"><%= tag.name %><br>
+      <% end %>
       <br>
     <input type="submit" value="Save payment">
   </form>

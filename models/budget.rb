@@ -29,10 +29,6 @@ attr_reader :id
     SqlRunner.run(sql, values)
   end
 
-  # def remaining_budget()
-  #   return @amount -= Transaction.total
-  # end
-
   def self.all()
     sql = "SELECT * FROM budgets"
     results = SqlRunner.run(sql)
