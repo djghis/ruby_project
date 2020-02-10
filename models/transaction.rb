@@ -63,7 +63,8 @@ class Transaction
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
-    return results.map{|transaction| Transaction.new(transaction)}
+    transactions = results.map{|transaction| Transaction.new(transaction)}
+    return transactions.sort_by{|transaction| transaction.time_inserted}.reverse
   end
 
   def self.find(id)
