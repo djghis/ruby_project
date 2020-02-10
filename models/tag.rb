@@ -29,6 +29,13 @@ class Tag
     SqlRunner.run(sql, values)
   end
 
+  def frequency()
+    sql = "SELECT transactions_tags.tag_id FROM transactions_tags WHERE tag_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|tag|}.length
+  end
+
   def self.all()
     sql = "SELECT * FROM tags"
     results = SqlRunner.run(sql)
@@ -38,6 +45,13 @@ class Tag
   def self.delete_all()
     sql = "DELETE FROM tags"
     SqlRunner.run(sql)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run( sql, values ).first
+    return Tag.new(results)
   end
 
 
