@@ -1,0 +1,24 @@
+<h2>Update this transaction</h2>
+  <br>
+    <form action="/transactions/<%= @transaction.id %>/update" method="post">
+      <label for="amount">Update transaction amount:</label>
+        <input id="amount" type="text" name="amount" value="<%= @transaction.amount %>">
+      <label for="merchant">Merchant:</label>
+          <select id="merchant" name="merchant_id" value="<%= @transaction.merchant_name %>">
+            <% for merchant in @merchants %>
+              <option value="<%= merchant.id %>"><%= merchant.name %></option>
+            <% end %>
+              <option value="other">New merchant</option>
+            </select>
+            <br>
+          <!-- <label for="new_merchant">Or enter a new merchant:</label>
+            <input id="new_merchant" type="text" name="merchant_id"/>
+            <br><br> -->
+        <label for="tags">Tags:</label>
+          <br>
+            <% for tag in @tags %>
+            <input type="checkbox" name="tag_id[]"><%= tag.name %><br>
+            <% end %>
+            <br>
+        <input type="submit" value="Save transaction">
+    </form> 

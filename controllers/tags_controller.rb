@@ -37,7 +37,7 @@ get '/tags/:id/update' do
   erb(:'tags/update')
 end
 
-post '/tags/:id/update' do # update
+post '/tags/:id/update' do
   Tag.new(params).edit
   redirect to '/tags'
 end

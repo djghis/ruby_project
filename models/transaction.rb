@@ -52,6 +52,14 @@ class Transaction
     return tag_names.join(", ")
   end
 
+  def tags()
+    sql = "SELECT tags.id FROM tags INNER JOIN transactions_tags ON tags.id = tag_id WHERE transaction_id = $1"
+    values = [@id]
+    tags = SqlRunner.run(sql, values)
+    tag_ids = tags.map {|tag| tag['id'].to_i}
+    return tag_ids
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
@@ -65,7 +73,8 @@ class Transaction
       if results == nil
         return nil
       else
-        return Transaction.new(results)
+        found_transaction = Transaction.new(results)
+        return found_transaction
       end
   end
 

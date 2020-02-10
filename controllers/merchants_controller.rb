@@ -36,7 +36,7 @@ get '/merchants/:id/update' do
   erb(:'merchants/update')
 end
 
-post '/merchants/:id/update' do # update
+post '/merchants/:id/update' do
   Merchant.new(params).edit
   redirect to '/merchants'
 end

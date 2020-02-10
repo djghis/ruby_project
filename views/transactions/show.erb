@@ -16,8 +16,10 @@
       </tr>
     </table>
   <br>
-    <p>Edit transaction: </p>
-    <form action="/transactions/<%= @transaction.id %>/delete" method="post">
-    <input type="submit" value="Delete transaction">
+    <form action="/transactions/<%= @transaction.id %>/update" method="get">
+      <input type="submit" value="Edit transaction">
     </form>
   <br>
+    <form action="/transactions/<%= @transaction.id %>/delete" method="post">
+      <input type="submit" value="Delete transaction">
+    </form>
