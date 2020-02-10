@@ -54,5 +54,13 @@ class Tag
     return Tag.new(results)
   end
 
+  def self.find_by_name(name)
+   sql = "SELECT * FROM tags WHERE LOWER(name) = $1"
+   values = [name.downcase]
+   results = SqlRunner.run(sql, values).first
+   found_tag = Tag.new(results)
+   return found_tag
+ end
+
 
 end
