@@ -12,7 +12,6 @@ get '/tags' do
 end
 
 get '/tags/new' do
-  @error = ""
   if params[:error] == "true"
     @error = "Tag already exists!"
   end

@@ -44,8 +44,12 @@ class Merchant
    sql = "SELECT * FROM merchants WHERE LOWER(name) = $1"
    values = [name.downcase]
    results = SqlRunner.run(sql, values).first
-   found_merchant = Merchant.new(results)
-   return found_merchant
+    if results == nil
+      return nil
+    else
+      found_merchant = Merchant.new(results)
+      return found_merchant
+    end
  end
 
 

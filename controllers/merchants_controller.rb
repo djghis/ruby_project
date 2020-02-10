@@ -11,11 +11,17 @@ get '/merchants' do
 end
 
 get '/merchants/new' do
+  if params[:error] == "true"
+    @error = "Merchant already exists!"
+  end
   erb(:'merchants/new')
 end
 
 post '/merchants' do
- merchant = Merchant.new(params)
- merchant.save
- redirect to '/merchants'
+  if Merchant.find_by_name(params['name']) == nil
+    merchant = Merchant.new(params)
+    merchant.save
+  else redirect to '/merchants/new?error=true'
+  end
+  redirect to '/merchants'
 end
