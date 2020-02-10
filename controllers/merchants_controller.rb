@@ -31,6 +31,16 @@ get '/merchants/:id' do
 erb(:"merchants/show")
 end
 
+get '/merchants/:id/update' do
+  @merchant = Merchant.find(params['id'].to_i)
+  erb(:'merchants/update')
+end
+
+post '/merchants/:id/update' do # update
+  Merchant.new(params).edit
+  redirect to '/merchants'
+end
+
 post '/merchants/:id/delete' do
   @merchant = Merchant.find(params[:id])
   @merchant.delete()

@@ -22,7 +22,7 @@ CREATE TABLE tags (
 CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
   amount FLOAT,
-  merchant_id INT REFERENCES merchants(id),
+  merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE,
   time_inserted TIMESTAMP
 );
 
