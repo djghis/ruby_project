@@ -14,7 +14,7 @@ class Transaction
         @time_inserted = options['time_inserted']
       else @time_inserted = DateTime.now
       end
-      
+
   end
 
 
@@ -56,6 +56,17 @@ class Transaction
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
     return results.map{|transaction| Transaction.new(transaction)}
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values).first
+      if results == nil
+        return nil
+      else
+        return Transaction.new(results)
+      end
   end
 
   def self.total()

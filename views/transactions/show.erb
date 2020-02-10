@@ -1,0 +1,23 @@
+<h2>Transaction details</h2>
+  <br>
+    <table>
+      <tr>
+        <th>Amount</th>
+        <th>Merchant</th>
+        <th>Time</th>
+        <th>Tags</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td><%= @transaction.amount %></td>
+        <td><%= @transaction.merchant_name %></td>
+        <td><%= @transaction.time_inserted %></td>
+        <td><%= @transaction.tag_names %></td>
+      </tr>
+    </table>
+  <br>
+    <p>Edit transaction: </p>
+    <form action="/transactions/<%= @transaction.id %>/delete" method="post">
+    <input type="submit" value="Delete transaction">
+    </form>
+  <br>

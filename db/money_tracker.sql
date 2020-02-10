@@ -28,6 +28,6 @@ CREATE TABLE transactions (
 
 CREATE TABLE transactions_tags (
   id SERIAL PRIMARY KEY,
-  transaction_id INT REFERENCES transactions(id),
+  transaction_id INT REFERENCES transactions(id) ON DELETE CASCADE,
   tag_id INT REFERENCES tags(id)
 );
