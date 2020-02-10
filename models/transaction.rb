@@ -79,6 +79,20 @@ class Transaction
       end
   end
 
+  def self.get_id(merchant_name)
+    sql = "SELECT merchants.id FROM merchants WHERE LOWER(name) = $1"
+    values = [merchant_name.downcase]
+    return SqlRunner.run(sql, values).first['id'].to_i
+  end
+
+  def self.find_by_merchant(merchant_name)
+    merchant_id = Transaction.get_id(merchant_name)
+    sql = "SELECT * FROM transactions WHERE merchant_id = $1"
+    values = [merchant_id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|transaction| Transaction.new(transaction)}
+  end
+
   def self.total()
     all_transactions = Transaction.all
     amounts = all_transactions.map {|result| result.amount}
