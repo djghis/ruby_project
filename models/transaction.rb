@@ -108,6 +108,13 @@ class Transaction
     return results.map{|transaction| Transaction.new(transaction)}
   end
 
+  def self.find_by_amount(amount)
+    sql = "SELECT * FROM transactions WHERE amount > $1"
+    values = [amount]
+    results = SqlRunner.run(sql, values)
+    return results.map{|transaction| Transaction.new(transaction)}
+  end
+
   def self.total()
     all_transactions = Transaction.all
     amounts = all_transactions.map {|result| result.amount}
