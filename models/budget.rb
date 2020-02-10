@@ -17,15 +17,15 @@ attr_reader :id
     @id = results.first['id'].to_f
   end
 
-  def edit()
-    sql = "UPDATE budgets SET amount = $1 WHERE id = ($2)"
-    values = [@amount, @id]
-    SqlRunner.run(sql, values)
-  end
-
   def delete()
     sql = "DELETE FROM budgets WHERE id = $1"
     values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.edit()
+    sql = "UPDATE budgets SET amount = $1 WHERE id = ($2)"
+    values = [@amount, @id]
     SqlRunner.run(sql, values)
   end
 
