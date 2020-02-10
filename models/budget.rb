@@ -7,14 +7,14 @@ attr_reader :id
 
   def initialize(options)
     @id = options['id'] if options['id']
-    @amount = options['amount'].to_i
+    @amount = options['amount'].to_f
   end
 
   def save()
     sql = "INSERT INTO budgets (amount) VALUES ($1) RETURNING id"
-    values = [@name]
+    values = [@amount]
     results = SqlRunner.run(sql, values)
-    @id = results.first['id'].to_i
+    @id = results.first['id'].to_f
   end
 
   def edit()
@@ -29,15 +29,28 @@ attr_reader :id
     SqlRunner.run(sql, values)
   end
 
-  def remaining_budget()
-    return @amount -= Transaction.total
-  end
+  # def remaining_budget()
+  #   return @amount -= Transaction.total
+  # end
 
   def self.all()
     sql = "SELECT * FROM budgets"
     results = SqlRunner.run(sql)
-    return results.map{|budget| Budget.new(budgets)}
+    return results.map{|budget| Budget.new(budget)}
   end
+
+  def self.total()
+    budget_data = Budget.all
+    budget_amounts = budget_data.map {|result| result.amount}
+    total = budget_amounts.reduce(0) {|sum, amount| sum + amount}
+    return total
+  end
+
+  def self.remaining_budget
+    remaining_budget = Budget.total - Transaction.total
+    return remaining_budget
+  end
+
 
   def self.delete_all()
     sql = "DELETE FROM budgets"

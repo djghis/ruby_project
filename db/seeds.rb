@@ -14,8 +14,10 @@ Budget.delete_all()
 
 
 budget1 = Budget.new(
-  "amount" => "500"
+  "amount" => "500.00"
 )
+
+budget1.save()
 
 merchant1 = Merchant.new(
   "name" => "Tesco"
