@@ -35,6 +35,12 @@ class TransactionTag
     return results.map{|transaction_tag| TransactionTag.new(transaction_tag)}
   end
 
+  def self.delete_by_transaction(transaction_id)
+    sql = "DELETE FROM transactions_tags WHERE transaction_id = $1"
+    values = [transaction_id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions_tags"
     SqlRunner.run(sql)

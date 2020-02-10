@@ -42,10 +42,10 @@ get '/transactions/:id/update' do
 end
 
 post '/transactions/:id/update' do
-  Transaction.new(params).edit
-   for tag in params['tag_id']
-     TransactionTag.new("transaction_id" => params['id'], "tag_id" => tag).save
-   end
+  TransactionTag.delete_by_transaction(params['id'])
+  @transaction = Transaction.new(params)
+  @transaction.save
+    params['tag_id'].each {|tag_id| TransactionTag.new("transaction_id" => params['id'], "tag_id" => tag_id).save}
   redirect to '/transactions'
 end
 
