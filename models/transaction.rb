@@ -79,7 +79,7 @@ class Transaction
       end
   end
 
-  def self.get_id(merchant_name)
+  def self.get_merchant_id(merchant_name)
     sql = "SELECT merchants.id FROM merchants WHERE LOWER(name) = $1"
     values = [merchant_name.downcase]
     return SqlRunner.run(sql, values).first['id'].to_i
@@ -89,6 +89,21 @@ class Transaction
     merchant_id = Transaction.get_id(merchant_name)
     sql = "SELECT * FROM transactions WHERE merchant_id = $1"
     values = [merchant_id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|transaction| Transaction.new(transaction)}
+  end
+
+  def self.get_tag_id(tag_name)
+    sql = "SELECT tags.id FROM tags WHERE LOWER(name) = $1"
+    values = [tag_name.downcase]
+    return SqlRunner.run(sql, values).first['id'].to_i
+  end
+
+
+  def self.find_by_tag(tag_name)
+    tag_id = Transaction.get_tag_id(tag_name)
+    sql = "SELECT * FROM transactions INNER JOIN transactions_tags ON transactions.id = transaction_id WHERE tag_id = $1"
+    values = [tag_id]
     results = SqlRunner.run(sql, values)
     return results.map{|transaction| Transaction.new(transaction)}
   end
