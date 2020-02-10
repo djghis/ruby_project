@@ -2,7 +2,7 @@
 
 <form action="/transactions" method="post">
   <label for="amount">Payment amount:</label>
-    <input id="amount" type="text" name="name">
+    <input id="amount" type="text" name="amount">
     <br>
   <label for="merchant">Merchant:</label>
       <select id="merchant" name="merchant_id">
@@ -11,6 +11,7 @@
         <% end %>
         <option value="other">New merchant</option>
       </select>
+      <input id="new_merchant" type="text" name="merchant_id" style='display:none'/>
       <br>
     <input type="submit" value="Save payment">
   </form>

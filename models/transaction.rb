@@ -42,7 +42,7 @@ class Transaction
     sql = "SELECT tags.name FROM tags INNER JOIN transactions_tags ON tags.id = tag_id WHERE transaction_id = $1"
     values = [@id]
     tags = SqlRunner.run(sql, values)
-    tag_names = tags.map {|tag| tag["name"]}
+    tag_names = tags.map {|tag| tag["name"].lowercase}
     return tag_names.join(", ")
   end
 
