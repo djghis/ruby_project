@@ -1,0 +1,9 @@
+<h2>Your tags</h2>
+<br>
+  <table>
+    <% @tags.each do |tag| %>
+    <tr>
+      <td><%= tag.name %></td>
+    </tr>
+    <% end %>
+</table>
