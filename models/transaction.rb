@@ -9,8 +9,14 @@ class Transaction
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_f
     @merchant_id = options['merchant_id'].to_i
-    @time_inserted = DateTime.now
+
+      if options['time_inserted']
+        @time_inserted = options['time_inserted']
+      else @time_inserted = DateTime.now
+      end
+      
   end
+
 
   def save()
     sql = "INSERT INTO transactions (amount, merchant_id, time_inserted) VALUES ($1, $2, $3) RETURNING id"

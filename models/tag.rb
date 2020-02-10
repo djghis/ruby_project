@@ -58,8 +58,12 @@ class Tag
    sql = "SELECT * FROM tags WHERE LOWER(name) = $1"
    values = [name.downcase]
    results = SqlRunner.run(sql, values).first
-   found_tag = Tag.new(results)
-   return found_tag
+    if results == nil
+      return nil
+    else
+      found_tag = Tag.new(results)
+      return found_tag
+    end
  end
 
 

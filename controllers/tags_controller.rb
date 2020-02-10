@@ -12,13 +12,20 @@ get '/tags' do
 end
 
 get '/tags/new' do
+  @error = ""
+  if params[:error] == "true"
+    @error = "Tag already exists!"
+  end
   erb(:'tags/new')
 end
 
 post '/tags' do
- tag = Tag.new(params)
- tag.save
- redirect to '/tags'
+  if Tag.find_by_name(params['name']) == nil
+    tag = Tag.new(params)
+    tag.save
+  else redirect to '/tags/new?error=true'
+  end
+  redirect to '/tags'
 end
 
 get '/tags/:id' do
