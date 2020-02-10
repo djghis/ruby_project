@@ -3,8 +3,11 @@
     <p>Name: <%= @tag.name %></p>
     <p>You have used this tag <%= @tag.frequency %> times!</p>
   <br>
-    <p>Edit tag: </p>
+    <form action="/tags/<%= @tag.id %>/update" method="get">
+      <input type="submit" value="Edit tag">
+    </form>
+  <br>
     <form action="/tags/<%= @tag.id %>/delete" method="post">
-    <input type="submit" value="Delete tag">
+      <input type="submit" value="Delete tag">
     </form>
   <br>
