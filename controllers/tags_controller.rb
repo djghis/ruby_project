@@ -16,7 +16,7 @@ get '/tags/new' do
 end
 
 post '/tags' do
- @tag = Tag.new(params)
- @tag.save
+ tag = Tag.new(params)
+ tag.save
  redirect to '/tags'
 end
