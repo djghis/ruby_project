@@ -1,0 +1,10 @@
+<h2>Merchant details</h2>
+  <br>
+    <p>Name: <%= @merchant.name %></p>
+    <p>You have used this merchant <%= @merchant.frequency %> times!</p>
+  <br>
+    <p>Edit merchant: </p>
+    <form action="/merchants/<%= @merchant.id %>/delete" method="post">
+    <input type="submit" value="Delete merchant">
+    </form>
+  <br>

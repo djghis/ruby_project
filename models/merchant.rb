@@ -29,10 +29,24 @@ class Merchant
     SqlRunner.run(sql, values)
   end
 
+  def frequency()
+    sql = "SELECT transactions.merchant_id FROM transactions WHERE merchant_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|merchant|}.length
+  end
+
   def self.all()
     sql = "SELECT * FROM merchants"
     results = SqlRunner.run(sql)
     return results.map{|merchant| Merchant.new(merchant)}
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values).first
+    return Merchant.new(results)
   end
 
   def self.delete_all()
