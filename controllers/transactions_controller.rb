@@ -41,10 +41,10 @@ get '/transactions/:id/update' do
   erb(:'transactions/update')
 end
 
-post '/transaction/:id/update' do
+post '/transactions/:id/update' do
   Transaction.new(params).edit
    for tag in params['tag_id']
-     TransactionTag.new("transaction_id" => @transaction.id, "tag_id" => tag).save
+     TransactionTag.new("transaction_id" => params['id'], "tag_id" => tag).save
    end
   redirect to '/transactions'
 end
