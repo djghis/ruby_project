@@ -7,7 +7,7 @@ attr_reader :id
 
   def initialize(options)
     @id = options['id'] if options['id']
-    @amount = options['amount']
+    @amount = options['amount'].to_i
   end
 
   def save()
@@ -27,6 +27,10 @@ attr_reader :id
     sql = "DELETE FROM budgets WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def remaining_budget()
+    return @amount -= Transaction.total
   end
 
   def self.all()
