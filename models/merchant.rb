@@ -40,5 +40,13 @@ class Merchant
     SqlRunner.run(sql)
   end
 
+  def self.find_by_name(name)
+   sql = "SELECT * FROM merchants WHERE LOWER(name) = $1"
+   values = [name.downcase]
+   results = SqlRunner.run(sql, values).first
+   found_merchant = Merchant.new(results)
+   return found_merchant
+ end
+
 
 end
