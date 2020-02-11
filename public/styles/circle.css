@@ -49,6 +49,13 @@ html {
   vertical-align: middle;
 }
 
+.circle__content__small {
+  display: table-cell;
+  padding: 2em;
+  vertical-align: middle;
+}
+
+
 @media (min-width: 480px) {
   .circle__content {
     font-size: 4em;
