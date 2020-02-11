@@ -23,6 +23,18 @@ attr_reader :id
     SqlRunner.run(sql, values)
   end
 
+
+  def self.check_budget
+    remaining = Budget.remaining_budget
+    if remaining > 50.0
+      return "green"
+    elsif remaining > 0.0
+      return "orange"
+    else
+      return "red"
+    end
+  end
+
   def self.edit()
     sql = "UPDATE budgets SET amount = $1 WHERE id = ($2)"
     values = [@amount, @id]

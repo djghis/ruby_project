@@ -10,5 +10,6 @@ also_reload('models/*')
 
 get '/' do
   @remaining_budget = Budget.remaining_budget()
+  @budget_colour = Budget.check_budget()
   erb(:home)
 end
