@@ -170,6 +170,19 @@ class Transaction
     return results.map {|transaction| Transaction.new(transaction)}
   end
 
+  def self.find_by_current_month
+    sql = "SELECT * FROM transactions WHERE extract(month FROM time_inserted) = extract(month FROM CURRENT_DATE)"
+    results = SqlRunner.run(sql)
+    return results.map {|transaction| Transaction.new(transaction)}
+  end
+
+  def self.current_month_total
+    months_transactions = Transaction.find_by_current_month
+    amounts = months_transactions.map {|result| result.amount}
+    total = amounts.reduce(0) {|sum, amount| sum + amount}
+    return total
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
