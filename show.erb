@@ -1,0 +1,12 @@
+<h2>Tag details</h2>
+  <br>
+    <p>Name: <%= @tag.name %></p>
+    <p>You have used this tag <%= @tag.frequency %> times!</p>
+  <br>
+    <form action="/tags/<%= @tag.id %>/update" method="get">
+      <input type="submit" value="Edit tag">
+    </form>
+  <br>
+    <form action="/tags/<%= @tag.id %>/delete" method="post">
+      <input type="submit" value="Delete tag">
+    </form>

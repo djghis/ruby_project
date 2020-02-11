@@ -1,9 +1,20 @@
-#logo {
+#biglogo {
   font-family: 'Galada', cursive;
-  background: -webkit-linear-gradient(#861657, #ffa69e);
+  background: -webkit-linear-gradient(#9ab5e1 0%, #f39fdc 74%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 10em;
   text-align: center;
   width: 100%;
+}
+
+#smalllogo {
+  font-family: 'Galada', cursive;
+  background: -webkit-linear-gradient(#9ab5e1 0%, #f39fdc 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
+  display: inline;
 }

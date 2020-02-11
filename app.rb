@@ -8,6 +8,8 @@ require_relative('controllers/transactions_controller')
 also_reload('models/*')
 
 get '/welcome' do
+  @wrapper_id = 'id="transparent"'
+  @large_logo = true
   erb(:'welcome/welcome')
 end
 

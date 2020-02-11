@@ -65,5 +65,9 @@ a:hover {
 
 .bottomnav {
   height: 25%;
-  margin-top: 35%;
+  margin-top: 25%;
+}
+
+.hidden {
+  display: none;
 }

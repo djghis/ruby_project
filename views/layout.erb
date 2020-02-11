@@ -14,6 +14,11 @@
       <div class="nav topnav">
         <a href="/">Home</a>
         <a href="/transactions">Your payments</a>
+        <% if @large_logo %>
+          <div id="biglogo">OnTrack</div>
+        <% else %>
+          <div id="smalllogo">OnTrack</div>
+        <% end %>
         <a href="/merchants">Your merchants</a>
         <a href="/tags">Your tags</a>
       </div>
