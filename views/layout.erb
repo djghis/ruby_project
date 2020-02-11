@@ -3,18 +3,25 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+    <link rel="stylesheet" type="text/css" href="/styles/circle.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <title>Money Tracker</title>
   </head>
   <body>
-    <nav>
-      <ul>
+    <!-- <nav> -->
+      <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/transactions">Your payments</a>
+        <a href="/merchants">Your merchants</a>
+        <a href="/tags">Your tags</a>
+      </div>
+      <!-- <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/transactions">Your payments</a></li>
         <li><a href="/merchants">Your merchants</a></li>
         <li><a href="/tags">Your tags</a></li>
       </ul>
-    </nav>
+    </nav> -->
       <%= yield %>
   </body>
 </html>

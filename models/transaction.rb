@@ -12,7 +12,7 @@ class Transaction
 
       if options['time_inserted']
         @time_inserted = options['time_inserted']
-      else @time_inserted = DateTime.now
+      else @time_inserted = DateTime.now.strftime('%Y-%m-%d %H:%M:%S')
       end
 
   end
@@ -120,6 +120,13 @@ class Transaction
     values = [amount]
     results = SqlRunner.run(sql, values)
     return results.map{|transaction| Transaction.new(transaction)}
+  end
+
+  def self.sort_by_time()
+    sql = "SELECT * FROM transactions"
+    results = SqlRunner.run(sql)
+    results_array = results.map{|transaction| Transaction.new(transaction)}
+    return results_array.sort_by{|transaction| transaction.time_inserted}
   end
 
   def self.total()
