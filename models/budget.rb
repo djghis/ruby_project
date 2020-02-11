@@ -59,6 +59,10 @@ attr_reader :id
     return remaining_budget
   end
 
+  def self.remaining_monthly_budget
+    remaining_budget = Budget.total - Transaction.current_month_total
+    return remaining_budget
+  end
 
   def self.delete_all()
     sql = "DELETE FROM budgets"
