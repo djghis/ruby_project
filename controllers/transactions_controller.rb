@@ -10,7 +10,7 @@ require_relative('../models/budget')
 also_reload('../models/*')
 
 get '/transactions' do
-  @transactions = Transaction.all()
+  @transactions = Transaction.sort_by_time().reverse
   erb(:'transactions/index')
 end
 
