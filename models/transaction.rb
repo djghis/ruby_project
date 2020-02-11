@@ -145,18 +145,15 @@ class Transaction
   def self.find_all(search_term)
     merchants = Transaction.find_by_merchant(search_term.to_s)
     tags = Transaction.find_by_tag(search_term.to_s)
-    p merchants
-    p tags
-
-    if merchants == nil && tags == nil
-      return nil
-    elsif merchants == nil && tags != nil
-      return tags
-    elsif tags == nil && merchants != nil
-      return merchants
-    else
-      return merchants + tags
-    end
+      if merchants == nil && tags == nil
+        return nil
+      elsif merchants == nil && tags != nil
+        return tags
+      elsif tags == nil && merchants != nil
+        return merchants
+      else
+        return merchants + tags
+      end
   end
 
   def self.total()
