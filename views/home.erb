@@ -1,16 +1,10 @@
-
-  <h1>Hello!</h1>
-  <br><br>
-    <h3>Your remaining budget is:</h3>
-    <div class="half-width-wrapper">
-      <div class="<%= "circle #{@budget_colour}" %>">
-        <div class="circle__inner">
-          <div class="circle__wrapper">
-            <div class="circle__content">£<%= @remaining_budget %></div>
-          </div>
-          </div>
-        </div>
+<div class="circle-outer-wrapper">
+  <h3>Your remaining budget is:</h3>
+  <div class="<%= "circle #{@budget_colour}" %>">
+    <div class="circle__inner">
+      <div class="circle__wrapper">
+        <div class="circle__content">£<%= @remaining_budget %></div>
       </div>
-  <br><br>
-    <h4><a href="/transactions/new">Add new payment</a></h4>
-    <h4><a href="/budget/update">Edit budget</a></h4>
+      </div>
+    </div>
+</div>

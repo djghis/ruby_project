@@ -1,6 +1,12 @@
 html {
   box-sizing: border-box;
   min-height: 100%;
+  background-image: url('/images/cash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .circle {
@@ -15,6 +21,10 @@ html {
   border-radius: 50%;
   background-color: #00cc00;
   content: "";
+}
+
+.circle-outer-wrapper {
+  background-color: transparent;
 }
 
 .circle__inner {

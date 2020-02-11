@@ -11,12 +11,19 @@
     <title>Money Tracker</title>
   </head>
   <body>
-      <div class="topnav">
+      <div class="nav topnav">
         <a href="/">Home</a>
         <a href="/transactions">Your payments</a>
         <a href="/merchants">Your merchants</a>
         <a href="/tags">Your tags</a>
       </div>
-      <%= yield %>
+      <div class="half-width-wrapper" <%= @wrapper_id %>>
+        <%= yield %>
+      </div>
+      <div class="nav bottomnav">
+        <a href="/">Home</a>
+        <a href="/transactions/new">Add new payment</a>
+        <a href="/budget/update">Edit budget</a>
+      </div>
   </body>
 </html>
