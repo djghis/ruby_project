@@ -83,8 +83,15 @@ transaction2 = Transaction.new(
   "merchant_id" => merchant2.id
 )
 
+transaction3 = Transaction.new(
+  "amount" => "57.50",
+  "merchant_id" => merchant1.id,
+  "time_inserted" => "2020-01-11 14:11:10"
+)
+
 transaction1.save()
 transaction2.save()
+transaction3.save()
 
 
 transaction_tag1 = TransactionTag.new(

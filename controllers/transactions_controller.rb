@@ -52,7 +52,7 @@ end
 post '/transactions/:id/update' do
   TransactionTag.delete_by_transaction(params['id'])
   @transaction = Transaction.new(params)
-  @transaction.save
+  @transaction.edit
     params['tag_id'].each {|tag_id| TransactionTag.new("transaction_id" => params['id'], "tag_id" => tag_id).save}
   redirect to '/transactions'
 end
