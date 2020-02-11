@@ -163,6 +163,13 @@ class Transaction
     return total
   end
 
+  def self.find_by_month(month_number)
+    sql = "SELECT * FROM transactions WHERE extract(month FROM time_inserted) = $1"
+    values = [month_number]
+    results = SqlRunner.run(sql, values)
+    return results.map {|transaction| Transaction.new(transaction)}
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
