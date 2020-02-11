@@ -6,6 +6,11 @@ body {
   opacity: 90%;
 }
 
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
 #bgimg {
   background-image: url('/images/cash.jpg');
   background-repeat: no-repeat;
