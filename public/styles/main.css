@@ -1,11 +1,24 @@
 body {
   font-family: 'Lato', sans-serif;
   margin: auto auto;
-  width: 50vw;
-  height: 50vh;
   text-align: center;
   color: #1a1a1a;
   background-color: #cccccc;
+}
+
+#bgimg {
+  background-image: url('/images/cash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+}
+
+.half-width-wrapper {
+  width: 50vw;
+  height: 50vh;
+  margin-left: 25%;
 }
 
 a {
