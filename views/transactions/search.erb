@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>Merchant</th>
+    <th>Time</th>
+    <th>Tags</th>
+  </tr>
+  <% @search.each do |transaction| %>
+  <tr>
+    <td><%= transaction.amount %></td>
+    <td><%= transaction.merchant_name %></td>
+    <td><%= transaction.time_inserted %></td>
+    <td><%= transaction.tag_names %></td>
+    <td><a href="/transactions/<%= transaction.id %>">View</a><td>
+  </tr>
+  <% end %>
+</table>

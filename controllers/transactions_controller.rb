@@ -29,9 +29,20 @@ post '/transactions' do
  redirect to '/transactions'
 end
 
+post '/transactions/search' do
+  @search = Transaction.find_all(params[:search])
+  p @search
+  erb(:'transactions/search')
+end
+
+# get '/transactions/search-results/:query' do
+#   @search = Transaction.find_all(params[:query])
+#   erb(:'transactions/search')
+# end
+
 get '/transactions/:id' do
   @transaction = Transaction.find(params['id'].to_i)
-erb(:"transactions/show")
+erb(:'transactions/show')
 end
 
 get '/transactions/:id/update' do

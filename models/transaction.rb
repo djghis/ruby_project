@@ -82,11 +82,16 @@ class Transaction
   def self.get_merchant_id(merchant_name)
     sql = "SELECT merchants.id FROM merchants WHERE LOWER(name) = $1"
     values = [merchant_name.downcase]
-    return SqlRunner.run(sql, values).first['id'].to_i
+    results = SqlRunner.run(sql, values).first
+      if results == [""] || results == nil
+        return nil
+      else
+        return results['id'].to_i
+      end
   end
 
   def self.find_by_merchant(merchant_name)
-    merchant_id = Transaction.get_id(merchant_name)
+    merchant_id = Transaction.get_merchant_id(merchant_name)
     sql = "SELECT * FROM transactions WHERE merchant_id = $1"
     values = [merchant_id]
     results = SqlRunner.run(sql, values)
@@ -96,12 +101,20 @@ class Transaction
   def self.get_tag_id(tag_name)
     sql = "SELECT tags.id FROM tags WHERE LOWER(name) = $1"
     values = [tag_name.downcase]
-    return SqlRunner.run(sql, values).first['id'].to_i
+    if values == [""]
+      return nil
+    else
+      result = SqlRunner.run(sql, values).first
+      if result != nil
+        return result['id'].to_i
+      else
+        return nil
+      end
+    end
   end
 
-
   def self.find_by_tag(tag_name)
-    tag_id = Transaction.get_tag_id(tag_name)
+    tag_id = Transaction.get_tag_id(tag_name.to_s)
     sql = "SELECT * FROM transactions INNER JOIN transactions_tags ON transactions.id = transaction_id WHERE tag_id = $1"
     values = [tag_id]
     results = SqlRunner.run(sql, values)
@@ -127,6 +140,23 @@ class Transaction
     results = SqlRunner.run(sql)
     results_array = results.map{|transaction| Transaction.new(transaction)}
     return results_array.sort_by{|transaction| transaction.time_inserted}
+  end
+
+  def self.find_all(search_term)
+    merchants = Transaction.find_by_merchant(search_term.to_s)
+    tags = Transaction.find_by_tag(search_term.to_s)
+    p merchants
+    p tags
+
+    if merchants == nil && tags == nil
+      return nil
+    elsif merchants == nil && tags != nil
+      return tags
+    elsif tags == nil && merchants != nil
+      return merchants
+    else
+      return merchants + tags
+    end
   end
 
   def self.total()
