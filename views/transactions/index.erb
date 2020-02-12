@@ -1,12 +1,19 @@
 <h2>Your transactions</h2>
 <br>
   <h4><a href="/transactions/current">View current month</a></h4>
+  <h4><a href="/transactions/new">Add new payment</a></h4>
+<br><br>
 <br>
     <form action="/transactions/search" method="post">
-       <div class="search">
-          <input type="text" name="search" class="searchTerm" placeholder="Search for payments">
-       </div>
+      <label for="merchant">Filter by merchant:</label>
+          <select id="merchant" name="merchant_id">
+            <% for merchant in @merchants %>
+            <option value= "<%= merchant.name %>"><%= merchant.name %></option>
+            <% end %>
+          </select>
+      <input type="submit" value="Filter">
     </form>
+<br>
 <br>
   <table>
     <tr>
@@ -25,7 +32,12 @@
     </tr>
     <% end %>
 </table>
-  <br><br>
     <h3>Total: £ <%= Transaction.total %></h3>
+      <form action="/transactions/search" method="post">
+         <div class="search">
+            <input type="text" name="search" class="searchTerm" placeholder="Search for payments">
+         </div>
+      </form>
+  <br><br>
     <h4><a href="/transactions/new">Add new payment</a></h4>
   <br><br>

@@ -14,7 +14,6 @@ class Transaction
         @time_inserted = options['time_inserted']
       else @time_inserted = DateTime.now.strftime('%Y-%m-%d %H:%M:%S')
       end
-
   end
 
 
