@@ -23,7 +23,7 @@ post '/merchants' do
     merchant.save
   else redirect to '/merchants/new?error=true'
   end
-  redirect to '/merchants'
+  redirect to '/transactions/new'
 end
 
 get '/merchants/:id' do

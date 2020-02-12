@@ -24,7 +24,7 @@ post '/tags' do
     tag.save
   else redirect to '/tags/new?error=true'
   end
-  redirect to '/tags'
+  redirect to '/transactions/new'
 end
 
 get '/tags/:id' do
