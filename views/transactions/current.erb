@@ -1,12 +1,5 @@
-<h2>Your transactions</h2>
+<h2>Your transactions this month</h2>
 <br>
-  <h4><a href="/transactions/current">View current month</a></h4>
-<br>
-    <form action="/transactions/search" method="post">
-       <div class="search">
-          <input type="text" name="search" class="searchTerm" placeholder="Search for payments">
-       </div>
-    </form>
 <br>
   <table>
     <tr>
@@ -26,6 +19,6 @@
     <% end %>
 </table>
   <br><br>
-    <h3>Total: £ <%= Transaction.total %></h3>
+    <h3>Total: £ <%= Transaction.current_month_total %></h3>
     <h4><a href="/transactions/new">Add new payment</a></h4>
   <br><br>

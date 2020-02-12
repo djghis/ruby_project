@@ -144,9 +144,70 @@ transaction_tag3 = TransactionTag.new(
   "tag_id" => tag1.id
 )
 
+transaction_tag4 = TransactionTag.new(
+  "transaction_id" => transaction3.id,
+  "tag_id" => tag3.id
+)
+
+transaction_tag5 = TransactionTag.new(
+  "transaction_id" => transaction3.id,
+  "tag_id" => tag4.id
+)
+
+transaction_tag6 = TransactionTag.new(
+  "transaction_id" => transaction3.id,
+  "tag_id" => tag6.id
+)
+
+transaction_tag7 = TransactionTag.new(
+  "transaction_id" => transaction5.id,
+  "tag_id" => tag1.id
+)
+
+transaction_tag8 = TransactionTag.new(
+  "transaction_id" => transaction6.id,
+  "tag_id" => tag6.id
+)
+
+transaction_tag9 = TransactionTag.new(
+  "transaction_id" => transaction6.id,
+  "tag_id" => tag1.id
+)
+
+transaction_tag10 = TransactionTag.new(
+  "transaction_id" => transaction7.id,
+  "tag_id" => tag3.id
+)
+
+transaction_tag11 = TransactionTag.new(
+  "transaction_id" => transaction7.id,
+  "tag_id" => tag6.id
+)
+
+transaction_tag12 = TransactionTag.new(
+  "transaction_id" => transaction7.id,
+  "tag_id" => tag4.id
+)
+
+transaction_tag13 = TransactionTag.new(
+  "transaction_id" => transaction8.id,
+  "tag_id" => tag3.id
+)
+
 transaction_tag1.save()
 transaction_tag2.save()
 transaction_tag3.save()
+transaction_tag4.save()
+transaction_tag5.save()
+transaction_tag6.save()
+transaction_tag7.save()
+transaction_tag8.save()
+transaction_tag9.save()
+transaction_tag10.save()
+transaction_tag11.save()
+transaction_tag12.save()
+transaction_tag13.save()
+
 
 binding.pry
 nil

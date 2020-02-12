@@ -41,6 +41,11 @@ get '/transactions/summary' do
   erb(:'transactions/summary')
 end
 
+get '/transactions/current' do
+  @transactions = Transaction.find_by_current_month
+  erb(:'/transactions/current')
+end
+
 get '/transactions/:id' do
   @transaction = Transaction.find(params['id'].to_i)
   erb(:'transactions/show')
