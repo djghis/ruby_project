@@ -13,6 +13,16 @@
           </select>
       <input type="submit" value="Filter">
     </form>
+    <br>
+    <form action="/transactions/search" method="post">
+      <label for="merchant">Filter by tag:</label>
+          <select id="tag" name="tag_id">
+            <% for tag in @tags %>
+            <option value= "<%= tag.name %>"><%= tag.name %></option>
+            <% end %>
+          </select>
+      <input type="submit" value="Filter">
+    </form>
 <br>
 <br>
   <table>
@@ -38,6 +48,4 @@
             <input type="text" name="search" class="searchTerm" placeholder="Search for payments">
          </div>
       </form>
-  <br><br>
-    <h4><a href="/transactions/new">Add new payment</a></h4>
-  <br><br>
+  <br><br><br><br>

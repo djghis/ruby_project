@@ -12,6 +12,7 @@ also_reload('../models/*')
 get '/transactions' do
   @transactions = Transaction.sort_by_time().reverse
   @merchants = Merchant.all
+  @tags = Tag.all
   erb(:'transactions/index')
 end
 
@@ -31,8 +32,10 @@ post '/transactions' do
 end
 
 post '/transactions/search' do
-  if params['merchant_id'] 
+  if params['merchant_id']
     @search = Transaction.find_by_merchant(params['merchant_id'])
+  elsif params['tag_id']
+    @search = Transaction.find_by_tag(params['tag_id'])
   else
     @search = Transaction.find_all(params[:search])
       if @search.length == 0 || @search == nil
