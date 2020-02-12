@@ -66,12 +66,13 @@ a:hover {
 }
 
 .topnav {
+  height: 25%;
   float: top;
 }
 
 .bottomnav {
   height: 25%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .hidden {
