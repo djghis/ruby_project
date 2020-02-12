@@ -116,7 +116,7 @@ class Transaction
 
   def self.find_by_tag(tag_name)
     tag_id = Transaction.get_tag_id(tag_name.to_s)
-    sql = "SELECT * FROM transactions INNER JOIN transactions_tags ON transactions.id = transaction_id WHERE tag_id = $1"
+    sql = "SELECT transactions.* FROM transactions INNER JOIN transactions_tags ON transactions.id = transaction_id WHERE tag_id = $1"
     values = [tag_id]
     results = SqlRunner.run(sql, values)
     return results.map{|transaction| Transaction.new(transaction)}
@@ -146,6 +146,7 @@ class Transaction
   def self.find_all(search_term)
     merchants = Transaction.find_by_merchant(search_term.to_s)
     tags = Transaction.find_by_tag(search_term.to_s)
+
       if merchants == nil && tags == nil
         return nil
       elsif merchants == nil && tags != nil
