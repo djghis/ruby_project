@@ -4,7 +4,7 @@
       <label for="amount">Update transaction amount:</label>
         <input id="amount" type="text" name="amount" value="<%= @transaction.amount %>">
       <label for="merchant">Merchant:</label>
-          <select id="merchant" name="merchant_id" value="<%= @transaction.merchant_name %>">
+          <select id="merchant" name="merchant_id" selected="<%= @transaction.merchant_id %>">
             <% for merchant in @merchants %>
               <option value="<%= merchant.id %>"><%= merchant.name %></option>
             <% end %>

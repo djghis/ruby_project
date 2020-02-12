@@ -60,6 +60,7 @@ class Transaction
     return tag_ids
   end
 
+
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
