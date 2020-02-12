@@ -1,9 +1,17 @@
 input[type=button], input[type=submit] {
   background-color:#1a1a1a;
-  border: none;
   color: #cccccc;
   padding: 5px 10px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  opacity: 70%;
+}
+
+select {
+  color: #cccccc;
+  background: transparent;
+  padding: 2px 10px;
+  background-color: #1a1a1a;
+  opacity: 40%;
 }
