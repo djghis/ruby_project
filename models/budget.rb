@@ -35,6 +35,17 @@ attr_reader :id
     end
   end
 
+  def self.check_current_budget
+    remaining = Budget.remaining_monthly_budget
+    if remaining > 50.0
+      return "green"
+    elsif remaining > 0.0
+      return "orange"
+    else
+      return "red"
+    end
+  end
+
   def self.edit()
     sql = "UPDATE budgets SET amount = $1 WHERE id = ($2)"
     values = [@amount, @id]

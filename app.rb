@@ -15,7 +15,7 @@ end
 
 get '/' do
   @remaining_budget = Budget.remaining_monthly_budget()
-  @budget_colour = Budget.check_budget()
+  @budget_colour = Budget.check_current_budget()
   @wrapper_id = 'id="transparent"'
   erb(:home)
 end
