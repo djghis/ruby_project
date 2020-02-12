@@ -80,12 +80,12 @@ transaction1 = Transaction.new(
 
 transaction2 = Transaction.new(
   "amount" => "150.00",
-  "merchant_id" => merchant2.id
+  "merchant_id" => merchant1.id
 )
 
 transaction3 = Transaction.new(
   "amount" => "57.50",
-  "merchant_id" => merchant1.id,
+  "merchant_id" => merchant3.id,
   "time_inserted" => "2020-01-11 14:11:10"
 )
 
@@ -161,7 +161,7 @@ transaction_tag6 = TransactionTag.new(
 
 transaction_tag7 = TransactionTag.new(
   "transaction_id" => transaction5.id,
-  "tag_id" => tag1.id
+  "tag_id" => tag5.id
 )
 
 transaction_tag8 = TransactionTag.new(
@@ -191,8 +191,19 @@ transaction_tag12 = TransactionTag.new(
 
 transaction_tag13 = TransactionTag.new(
   "transaction_id" => transaction8.id,
-  "tag_id" => tag3.id
+  "tag_id" => tag5.id
 )
+
+transaction_tag14 = TransactionTag.new(
+  "transaction_id" => transaction4.id,
+  "tag_id" => tag5.id
+)
+
+transaction_tag15 = TransactionTag.new(
+  "transaction_id" => transaction4.id,
+  "tag_id" => tag2.id
+)
+
 
 transaction_tag1.save()
 transaction_tag2.save()
@@ -207,6 +218,8 @@ transaction_tag10.save()
 transaction_tag11.save()
 transaction_tag12.save()
 transaction_tag13.save()
+transaction_tag14.save()
+transaction_tag15.save()
 
 
 binding.pry
