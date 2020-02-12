@@ -9,11 +9,11 @@
         <% for merchant in @merchants %>
         <option value= "<%= merchant.id %>"><%= merchant.name %></option>
         <% end %>
-        <option value="other">New merchant</option>
+        <!-- <option value="other">New merchant</option> -->
       </select>
       <br><br>
     <label for="new_merchant">If you picked "new merchant", please enter their name:</label>
-      <input id="new_merchant" type="text" name="merchant_id"/>
+      <!-- <input id="new_merchant" type="text" name="merchant_id"/> -->
       <br><br>
   <label for="tags">Tags:</label>
     <br>
@@ -23,3 +23,7 @@
       <br>
     <input type="submit" value="Save payment">
   </form>
+
+  <%= erb(:"merchants/new") %>
+
+  <br><br>

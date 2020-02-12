@@ -4,9 +4,9 @@
       <label for="amount">Update transaction amount:</label>
         <input id="amount" type="text" name="amount" value="<%= @transaction.amount %>">
       <label for="merchant">Merchant:</label>
-          <select id="merchant" name="merchant_id" selected="<%= @transaction.merchant_id %>">
+          <select id="merchant" name="merchant_id">
             <% for merchant in @merchants %>
-              <option value="<%= merchant.id %>"><%= merchant.name %></option>
+              <option value="<%= merchant.id %>" <%= "selected" if @transaction.merchant_id == merchant.id %>><%= merchant.name %></option>
             <% end %>
               <option value="other">New merchant</option>
             </select>
@@ -17,8 +17,9 @@
         <label for="tags">Tags:</label>
           <br>
             <% for tag in @tags %>
-            <input type="checkbox" name="tag_id[]" value="<%= tag.id %>"> <%= tag.name %> <br>
+            <input type="checkbox" name="tag_id[]" value="<%= tag.id %>" <%= "checked" if @transaction.tag_names().include?(tag.name)%>> <%= tag.name %> <br>
             <% end %>
             <br>
         <input type="submit" value="Save transaction">
     </form>
+    <br><br>
