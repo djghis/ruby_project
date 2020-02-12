@@ -3,20 +3,32 @@
     <h3>January 2020</h3>
       <div class="<%= Budget.check_budget_eom(01) %>">
         <h3>£<%= Budget.past_remaining_monthly_budget(01) %></h3>
+        <% if Budget.check_budget_eom(01) == "green" %>
+          <img src="/images/trophy.png" alt="trophy">
+        <% end %>
       </div>
       <br>
     <h3>December 2019</h3>
       <div class="<%= Budget.check_budget_eom(12) %>">
         <h3>£<%= Budget.past_remaining_monthly_budget(12) %></h3>
+        <% if Budget.check_budget_eom(12) == "green" %>
+          <img src="/images/trophy.png" alt="trophy">
+        <% end %>
       </div>
       <br>
     <h3>November 2019</h3>
       <div class="<%= Budget.check_budget_eom(11) %>">
         <h3>£<%= Budget.past_remaining_monthly_budget(11) %></h3>
+        <% if Budget.check_budget_eom(11) == "green" %>
+          <img src="/images/trophy.png" alt="trophy">
+        <% end %>
       </div>
       <br>
     <h3>October 2019</h3>
       <div class="<%= Budget.check_budget_eom(10) %>">
         <h3>£<%= Budget.past_remaining_monthly_budget(10) %></h3>
+        <% if Budget.check_budget_eom(10) == "green" %>
+          <img src="/images/trophy.png" alt="trophy">
+        <% end %>
       </div>
       <br>
