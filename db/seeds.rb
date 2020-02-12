@@ -89,9 +89,44 @@ transaction3 = Transaction.new(
   "time_inserted" => "2020-01-11 14:11:10"
 )
 
+transaction4 = Transaction.new(
+  "amount" => "520.50",
+  "merchant_id" => merchant4.id,
+  "time_inserted" => "2019-11-27 15:35:10"
+)
+
+transaction5 = Transaction.new(
+  "amount" => "250.50",
+  "merchant_id" => merchant4.id,
+  "time_inserted" => "2019-10-23 12:10:10"
+)
+
+transaction6 = Transaction.new(
+  "amount" => "200.00",
+  "merchant_id" => merchant1.id,
+  "time_inserted" => "2019-10-11 14:11:10"
+)
+
+transaction7 = Transaction.new(
+  "amount" => "5.50",
+  "merchant_id" => merchant3.id,
+  "time_inserted" => "2020-01-02 10:10:10"
+)
+
+transaction8 = Transaction.new(
+  "amount" => "1.00",
+  "merchant_id" => merchant2.id,
+  "time_inserted" => "2019-12-10 23:09:03"
+)
+
 transaction1.save()
 transaction2.save()
 transaction3.save()
+transaction4.save()
+transaction5.save()
+transaction6.save()
+transaction7.save()
+transaction8.save()
 
 
 transaction_tag1 = TransactionTag.new(

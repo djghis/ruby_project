@@ -37,6 +37,10 @@ post '/transactions/search' do
   erb(:'transactions/search')
 end
 
+get '/transactions/summary' do
+  erb(:'transactions/summary')
+end
+
 get '/transactions/:id' do
   @transaction = Transaction.find(params['id'].to_i)
   erb(:'transactions/show')

@@ -177,6 +177,13 @@ class Transaction
     return results.map {|transaction| Transaction.new(transaction)}
   end
 
+  def self.month_total(month_number)
+    months_transactions = Transaction.find_by_month(month_number)
+    amounts = months_transactions.map {|result| result.amount}
+    total = amounts.reduce(0) {|sum, amount| sum + amount}
+    return total
+  end
+
   def self.current_month_total
     months_transactions = Transaction.find_by_current_month
     amounts = months_transactions.map {|result| result.amount}
