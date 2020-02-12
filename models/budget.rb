@@ -69,6 +69,17 @@ attr_reader :id
     return remaining_budget
   end
 
+  def self.check_budget_eom(month_number)
+    remaining = Budget.past_remaining_monthly_budget(month_number)
+    if remaining > 50.0
+      return "green"
+    elsif remaining > 0.0
+      return "orange"
+    else
+      return "red"
+    end
+  end
+
   def self.delete_all()
     sql = "DELETE FROM budgets"
     SqlRunner.run(sql)
